@@ -1,0 +1,423 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    DECIMAL
+    FLOAT
+    INTEIRO
+    LPARENTESE
+    READ
+    RPARENTESE
+    WRITE
+
+Grammar
+
+Rule 0     S' -> expressaoTop
+Rule 1     expressaoTop -> BEGIN expressaoTop
+Rule 2     expressaoTop -> expressao expressaoTop
+Rule 3     expressaoTop -> END IGNORA_NOVA_LINHA
+Rule 4     expressao -> termo MAIS termo
+Rule 5     expressao -> termo MENOS termo
+Rule 6     expressao -> termo ATRIBUICAO
+Rule 7     expressao -> termo
+Rule 8     termo -> fator VEZES fator
+Rule 9     termo -> fator DIVIDE fator
+Rule 10    termo -> fator
+Rule 11    fator -> INT
+Rule 12    fator -> NOME
+Rule 13    fator -> FINAL_LINHA
+Rule 14    fator -> IGNORA_NOVA_LINHA
+
+Terminals, with rules where they appear
+
+ATRIBUICAO           : 6
+BEGIN                : 1
+DECIMAL              : 
+DIVIDE               : 9
+END                  : 3
+FINAL_LINHA          : 13
+FLOAT                : 
+IGNORA_NOVA_LINHA    : 3 14
+INT                  : 11
+INTEIRO              : 
+LPARENTESE           : 
+MAIS                 : 4
+MENOS                : 5
+NOME                 : 12
+READ                 : 
+RPARENTESE           : 
+VEZES                : 8
+WRITE                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+expressao            : 2
+expressaoTop         : 1 2 0
+fator                : 8 8 9 9 10
+termo                : 4 4 5 5 6 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expressaoTop
+    (1) expressaoTop -> . BEGIN expressaoTop
+    (2) expressaoTop -> . expressao expressaoTop
+    (3) expressaoTop -> . END IGNORA_NOVA_LINHA
+    (4) expressao -> . termo MAIS termo
+    (5) expressao -> . termo MENOS termo
+    (6) expressao -> . termo ATRIBUICAO
+    (7) expressao -> . termo
+    (8) termo -> . fator VEZES fator
+    (9) termo -> . fator DIVIDE fator
+    (10) termo -> . fator
+    (11) fator -> . INT
+    (12) fator -> . NOME
+    (13) fator -> . FINAL_LINHA
+    (14) fator -> . IGNORA_NOVA_LINHA
+
+    BEGIN           shift and go to state 2
+    END             shift and go to state 4
+    INT             shift and go to state 8
+    NOME            shift and go to state 9
+    FINAL_LINHA     shift and go to state 10
+    IGNORA_NOVA_LINHA shift and go to state 5
+
+    expressaoTop                   shift and go to state 1
+    expressao                      shift and go to state 3
+    termo                          shift and go to state 6
+    fator                          shift and go to state 7
+
+state 1
+
+    (0) S' -> expressaoTop .
+
+
+
+state 2
+
+    (1) expressaoTop -> BEGIN . expressaoTop
+    (1) expressaoTop -> . BEGIN expressaoTop
+    (2) expressaoTop -> . expressao expressaoTop
+    (3) expressaoTop -> . END IGNORA_NOVA_LINHA
+    (4) expressao -> . termo MAIS termo
+    (5) expressao -> . termo MENOS termo
+    (6) expressao -> . termo ATRIBUICAO
+    (7) expressao -> . termo
+    (8) termo -> . fator VEZES fator
+    (9) termo -> . fator DIVIDE fator
+    (10) termo -> . fator
+    (11) fator -> . INT
+    (12) fator -> . NOME
+    (13) fator -> . FINAL_LINHA
+    (14) fator -> . IGNORA_NOVA_LINHA
+
+    BEGIN           shift and go to state 2
+    END             shift and go to state 4
+    INT             shift and go to state 8
+    NOME            shift and go to state 9
+    FINAL_LINHA     shift and go to state 10
+    IGNORA_NOVA_LINHA shift and go to state 5
+
+    expressaoTop                   shift and go to state 11
+    expressao                      shift and go to state 3
+    termo                          shift and go to state 6
+    fator                          shift and go to state 7
+
+state 3
+
+    (2) expressaoTop -> expressao . expressaoTop
+    (1) expressaoTop -> . BEGIN expressaoTop
+    (2) expressaoTop -> . expressao expressaoTop
+    (3) expressaoTop -> . END IGNORA_NOVA_LINHA
+    (4) expressao -> . termo MAIS termo
+    (5) expressao -> . termo MENOS termo
+    (6) expressao -> . termo ATRIBUICAO
+    (7) expressao -> . termo
+    (8) termo -> . fator VEZES fator
+    (9) termo -> . fator DIVIDE fator
+    (10) termo -> . fator
+    (11) fator -> . INT
+    (12) fator -> . NOME
+    (13) fator -> . FINAL_LINHA
+    (14) fator -> . IGNORA_NOVA_LINHA
+
+    BEGIN           shift and go to state 2
+    END             shift and go to state 4
+    INT             shift and go to state 8
+    NOME            shift and go to state 9
+    FINAL_LINHA     shift and go to state 10
+    IGNORA_NOVA_LINHA shift and go to state 5
+
+    expressao                      shift and go to state 3
+    expressaoTop                   shift and go to state 12
+    termo                          shift and go to state 6
+    fator                          shift and go to state 7
+
+state 4
+
+    (3) expressaoTop -> END . IGNORA_NOVA_LINHA
+
+    IGNORA_NOVA_LINHA shift and go to state 13
+
+
+state 5
+
+    (14) fator -> IGNORA_NOVA_LINHA .
+
+    VEZES           reduce using rule 14 (fator -> IGNORA_NOVA_LINHA .)
+    DIVIDE          reduce using rule 14 (fator -> IGNORA_NOVA_LINHA .)
+    MAIS            reduce using rule 14 (fator -> IGNORA_NOVA_LINHA .)
+    MENOS           reduce using rule 14 (fator -> IGNORA_NOVA_LINHA .)
+    ATRIBUICAO      reduce using rule 14 (fator -> IGNORA_NOVA_LINHA .)
+    BEGIN           reduce using rule 14 (fator -> IGNORA_NOVA_LINHA .)
+    END             reduce using rule 14 (fator -> IGNORA_NOVA_LINHA .)
+    INT             reduce using rule 14 (fator -> IGNORA_NOVA_LINHA .)
+    NOME            reduce using rule 14 (fator -> IGNORA_NOVA_LINHA .)
+    FINAL_LINHA     reduce using rule 14 (fator -> IGNORA_NOVA_LINHA .)
+    IGNORA_NOVA_LINHA reduce using rule 14 (fator -> IGNORA_NOVA_LINHA .)
+
+
+state 6
+
+    (4) expressao -> termo . MAIS termo
+    (5) expressao -> termo . MENOS termo
+    (6) expressao -> termo . ATRIBUICAO
+    (7) expressao -> termo .
+
+    MAIS            shift and go to state 14
+    MENOS           shift and go to state 15
+    ATRIBUICAO      shift and go to state 16
+    BEGIN           reduce using rule 7 (expressao -> termo .)
+    END             reduce using rule 7 (expressao -> termo .)
+    INT             reduce using rule 7 (expressao -> termo .)
+    NOME            reduce using rule 7 (expressao -> termo .)
+    FINAL_LINHA     reduce using rule 7 (expressao -> termo .)
+    IGNORA_NOVA_LINHA reduce using rule 7 (expressao -> termo .)
+
+
+state 7
+
+    (8) termo -> fator . VEZES fator
+    (9) termo -> fator . DIVIDE fator
+    (10) termo -> fator .
+
+    VEZES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    MAIS            reduce using rule 10 (termo -> fator .)
+    MENOS           reduce using rule 10 (termo -> fator .)
+    ATRIBUICAO      reduce using rule 10 (termo -> fator .)
+    BEGIN           reduce using rule 10 (termo -> fator .)
+    END             reduce using rule 10 (termo -> fator .)
+    INT             reduce using rule 10 (termo -> fator .)
+    NOME            reduce using rule 10 (termo -> fator .)
+    FINAL_LINHA     reduce using rule 10 (termo -> fator .)
+    IGNORA_NOVA_LINHA reduce using rule 10 (termo -> fator .)
+
+
+state 8
+
+    (11) fator -> INT .
+
+    VEZES           reduce using rule 11 (fator -> INT .)
+    DIVIDE          reduce using rule 11 (fator -> INT .)
+    MAIS            reduce using rule 11 (fator -> INT .)
+    MENOS           reduce using rule 11 (fator -> INT .)
+    ATRIBUICAO      reduce using rule 11 (fator -> INT .)
+    BEGIN           reduce using rule 11 (fator -> INT .)
+    END             reduce using rule 11 (fator -> INT .)
+    INT             reduce using rule 11 (fator -> INT .)
+    NOME            reduce using rule 11 (fator -> INT .)
+    FINAL_LINHA     reduce using rule 11 (fator -> INT .)
+    IGNORA_NOVA_LINHA reduce using rule 11 (fator -> INT .)
+
+
+state 9
+
+    (12) fator -> NOME .
+
+    VEZES           reduce using rule 12 (fator -> NOME .)
+    DIVIDE          reduce using rule 12 (fator -> NOME .)
+    MAIS            reduce using rule 12 (fator -> NOME .)
+    MENOS           reduce using rule 12 (fator -> NOME .)
+    ATRIBUICAO      reduce using rule 12 (fator -> NOME .)
+    BEGIN           reduce using rule 12 (fator -> NOME .)
+    END             reduce using rule 12 (fator -> NOME .)
+    INT             reduce using rule 12 (fator -> NOME .)
+    NOME            reduce using rule 12 (fator -> NOME .)
+    FINAL_LINHA     reduce using rule 12 (fator -> NOME .)
+    IGNORA_NOVA_LINHA reduce using rule 12 (fator -> NOME .)
+
+
+state 10
+
+    (13) fator -> FINAL_LINHA .
+
+    VEZES           reduce using rule 13 (fator -> FINAL_LINHA .)
+    DIVIDE          reduce using rule 13 (fator -> FINAL_LINHA .)
+    MAIS            reduce using rule 13 (fator -> FINAL_LINHA .)
+    MENOS           reduce using rule 13 (fator -> FINAL_LINHA .)
+    ATRIBUICAO      reduce using rule 13 (fator -> FINAL_LINHA .)
+    BEGIN           reduce using rule 13 (fator -> FINAL_LINHA .)
+    END             reduce using rule 13 (fator -> FINAL_LINHA .)
+    INT             reduce using rule 13 (fator -> FINAL_LINHA .)
+    NOME            reduce using rule 13 (fator -> FINAL_LINHA .)
+    FINAL_LINHA     reduce using rule 13 (fator -> FINAL_LINHA .)
+    IGNORA_NOVA_LINHA reduce using rule 13 (fator -> FINAL_LINHA .)
+
+
+state 11
+
+    (1) expressaoTop -> BEGIN expressaoTop .
+
+    $end            reduce using rule 1 (expressaoTop -> BEGIN expressaoTop .)
+
+
+state 12
+
+    (2) expressaoTop -> expressao expressaoTop .
+
+    $end            reduce using rule 2 (expressaoTop -> expressao expressaoTop .)
+
+
+state 13
+
+    (3) expressaoTop -> END IGNORA_NOVA_LINHA .
+
+    $end            reduce using rule 3 (expressaoTop -> END IGNORA_NOVA_LINHA .)
+
+
+state 14
+
+    (4) expressao -> termo MAIS . termo
+    (8) termo -> . fator VEZES fator
+    (9) termo -> . fator DIVIDE fator
+    (10) termo -> . fator
+    (11) fator -> . INT
+    (12) fator -> . NOME
+    (13) fator -> . FINAL_LINHA
+    (14) fator -> . IGNORA_NOVA_LINHA
+
+    INT             shift and go to state 8
+    NOME            shift and go to state 9
+    FINAL_LINHA     shift and go to state 10
+    IGNORA_NOVA_LINHA shift and go to state 5
+
+    termo                          shift and go to state 19
+    fator                          shift and go to state 7
+
+state 15
+
+    (5) expressao -> termo MENOS . termo
+    (8) termo -> . fator VEZES fator
+    (9) termo -> . fator DIVIDE fator
+    (10) termo -> . fator
+    (11) fator -> . INT
+    (12) fator -> . NOME
+    (13) fator -> . FINAL_LINHA
+    (14) fator -> . IGNORA_NOVA_LINHA
+
+    INT             shift and go to state 8
+    NOME            shift and go to state 9
+    FINAL_LINHA     shift and go to state 10
+    IGNORA_NOVA_LINHA shift and go to state 5
+
+    termo                          shift and go to state 20
+    fator                          shift and go to state 7
+
+state 16
+
+    (6) expressao -> termo ATRIBUICAO .
+
+    BEGIN           reduce using rule 6 (expressao -> termo ATRIBUICAO .)
+    END             reduce using rule 6 (expressao -> termo ATRIBUICAO .)
+    INT             reduce using rule 6 (expressao -> termo ATRIBUICAO .)
+    NOME            reduce using rule 6 (expressao -> termo ATRIBUICAO .)
+    FINAL_LINHA     reduce using rule 6 (expressao -> termo ATRIBUICAO .)
+    IGNORA_NOVA_LINHA reduce using rule 6 (expressao -> termo ATRIBUICAO .)
+
+
+state 17
+
+    (8) termo -> fator VEZES . fator
+    (11) fator -> . INT
+    (12) fator -> . NOME
+    (13) fator -> . FINAL_LINHA
+    (14) fator -> . IGNORA_NOVA_LINHA
+
+    INT             shift and go to state 8
+    NOME            shift and go to state 9
+    FINAL_LINHA     shift and go to state 10
+    IGNORA_NOVA_LINHA shift and go to state 5
+
+    fator                          shift and go to state 21
+
+state 18
+
+    (9) termo -> fator DIVIDE . fator
+    (11) fator -> . INT
+    (12) fator -> . NOME
+    (13) fator -> . FINAL_LINHA
+    (14) fator -> . IGNORA_NOVA_LINHA
+
+    INT             shift and go to state 8
+    NOME            shift and go to state 9
+    FINAL_LINHA     shift and go to state 10
+    IGNORA_NOVA_LINHA shift and go to state 5
+
+    fator                          shift and go to state 22
+
+state 19
+
+    (4) expressao -> termo MAIS termo .
+
+    BEGIN           reduce using rule 4 (expressao -> termo MAIS termo .)
+    END             reduce using rule 4 (expressao -> termo MAIS termo .)
+    INT             reduce using rule 4 (expressao -> termo MAIS termo .)
+    NOME            reduce using rule 4 (expressao -> termo MAIS termo .)
+    FINAL_LINHA     reduce using rule 4 (expressao -> termo MAIS termo .)
+    IGNORA_NOVA_LINHA reduce using rule 4 (expressao -> termo MAIS termo .)
+
+
+state 20
+
+    (5) expressao -> termo MENOS termo .
+
+    BEGIN           reduce using rule 5 (expressao -> termo MENOS termo .)
+    END             reduce using rule 5 (expressao -> termo MENOS termo .)
+    INT             reduce using rule 5 (expressao -> termo MENOS termo .)
+    NOME            reduce using rule 5 (expressao -> termo MENOS termo .)
+    FINAL_LINHA     reduce using rule 5 (expressao -> termo MENOS termo .)
+    IGNORA_NOVA_LINHA reduce using rule 5 (expressao -> termo MENOS termo .)
+
+
+state 21
+
+    (8) termo -> fator VEZES fator .
+
+    MAIS            reduce using rule 8 (termo -> fator VEZES fator .)
+    MENOS           reduce using rule 8 (termo -> fator VEZES fator .)
+    ATRIBUICAO      reduce using rule 8 (termo -> fator VEZES fator .)
+    BEGIN           reduce using rule 8 (termo -> fator VEZES fator .)
+    END             reduce using rule 8 (termo -> fator VEZES fator .)
+    INT             reduce using rule 8 (termo -> fator VEZES fator .)
+    NOME            reduce using rule 8 (termo -> fator VEZES fator .)
+    FINAL_LINHA     reduce using rule 8 (termo -> fator VEZES fator .)
+    IGNORA_NOVA_LINHA reduce using rule 8 (termo -> fator VEZES fator .)
+
+
+state 22
+
+    (9) termo -> fator DIVIDE fator .
+
+    MAIS            reduce using rule 9 (termo -> fator DIVIDE fator .)
+    MENOS           reduce using rule 9 (termo -> fator DIVIDE fator .)
+    ATRIBUICAO      reduce using rule 9 (termo -> fator DIVIDE fator .)
+    BEGIN           reduce using rule 9 (termo -> fator DIVIDE fator .)
+    END             reduce using rule 9 (termo -> fator DIVIDE fator .)
+    INT             reduce using rule 9 (termo -> fator DIVIDE fator .)
+    NOME            reduce using rule 9 (termo -> fator DIVIDE fator .)
+    FINAL_LINHA     reduce using rule 9 (termo -> fator DIVIDE fator .)
+    IGNORA_NOVA_LINHA reduce using rule 9 (termo -> fator DIVIDE fator .)
+
